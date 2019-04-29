@@ -1,8 +1,8 @@
-# env-aws-params
+# env-ssm
 
-[![Build Status](https://travis-ci.org/gmr/env-aws-params.svg?branch=master)](https://travis-ci.org/gmr/env-aws-params)
+[![Build Status](https://travis-ci.org/gmr/env-ssm.svg?branch=master)](https://travis-ci.org/gmr/env-ssm)
 
-``env-aws-params`` is a tool that injects AWS EC2 Systems Manager (SSM)
+``env-ssm`` is a tool that injects AWS EC2 Systems Manager (SSM)
 [Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html)
 Key / Value pairs as [Environment Variables](https://en.wikipedia.org/wiki/Environment_variable)
 when executing an application. It is intended to be used as a Docker
@@ -22,20 +22,20 @@ aws ssm put-parameter --name /service-prefix/ENV_VAR1 --value example
 aws ssm put-parameter --name /service-prefix/ENV_VAR2 --value test-value
 ```
 
-Then use ``env-aws-params`` to have bash display the env vars it was called with:
+Then use ``env-ssm`` to have bash display the env vars it was called with:
 ```bash
-env-aws-params --prefix /service-prefix /bin/bash -c set
+env-ssm --prefix /service-prefix /bin/bash -c set
 ```
 
 If you want to include common and service specific values, ``--prefix`` can be specified
 multiple times:
 ```bash
-env-aws-params --prefix /common /bin/bash -c set
+env-ssm --prefix /common /bin/bash -c set
 ```
 
 To get a plaintext output of your environment variables to use with other utilities, we can use `printenv`:
 ```bash
-env-aws-params --pristine --silent --prefix /service-prefix /usr/bin/printenv > ~/some-file.sh
+env-ssm --pristine --silent --prefix /service-prefix /usr/bin/printenv > ~/some-file.sh
 ```
 Which will write your environment variables in plain text, for example:
 ```bash
@@ -48,10 +48,10 @@ ENV_VAR2=test-value
 
 ```
 NAME:
-   env-aws-params - Application entry-point that injects SSM Parameter Store values as Environment Variables
+   env-ssm - Application entry-point that injects SSM Parameter Store values as Environment Variables
 
 USAGE:
-   env-aws-params [global options] -p prefix command [command arguments]
+   env-ssm [global options] -p prefix command [command arguments]
 
 COMMANDS:
      help, h  Shows a list of commands or help for one command
@@ -81,6 +81,6 @@ go build
 Building an environment is also provided as a docker image based on Alpine Linux. See the Dockerfile for more information.
 
 ```bash
-docker build -t env-aws-params; # Build the image
-docker run --rm -it -v $HOME/.aws/:/root/.aws/ env-aws-params [your options]
+docker build -t env-ssm; # Build the image
+docker run --rm -it -v $HOME/.aws/:/root/.aws/ env-ssm [your options]
 ```
