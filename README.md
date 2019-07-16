@@ -1,6 +1,6 @@
 # env-ssm
 
-[![Build Status](https://travis-ci.org/gmr/env-ssm.svg?branch=master)](https://travis-ci.org/gmr/env-ssm)
+[![Build Status](https://travis-ci.org/notonthehighstreet/env-ssm.svg?branch=master)](https://travis-ci.org/notonthehighstreet/env-ssm)
 
 ``env-ssm`` is a tool that injects AWS EC2 Systems Manager (SSM)
 [Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html)
