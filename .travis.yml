@@ -34,6 +34,6 @@ deploy:
     - "env-aws-params_${TRAVIS_TAG}_alpine-linux_amd64.zip"
     - "env-aws-params_${TRAVIS_TAG}_linux_amd64.zip"
   on:
-    repo: gmr/env-aws-params
+    repo: notonthehighstreet/env-ssm
     tags: true
   skip_cleanup: true
